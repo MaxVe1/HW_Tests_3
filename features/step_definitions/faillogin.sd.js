@@ -20,7 +20,7 @@ Then(/^I get "([^"]*)" error message$/,async function(message) {
             if (!this.state.email){
                 errMessage = 'Login is empty';                
             }               
-            if (this.state.email == 'old_walker@jw.com'){
+            if (this.state.email === 'old_walker@jw.com'){
                 errMessage = 'The user is suspended';                 
             }                       
             if (!this.state.password){
