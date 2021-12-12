@@ -1,12 +1,12 @@
 Feature: User Creation
 
   Background:
-    When I go to "https://viktor-silakov.github.io/course-sut/"
+    When I go to "https://viktor-silakov.github.io/course-sut/index.html?quick"
     When I login as: "User", "Password"
-
+  
   Scenario: Create user
     When I go to "Create User" menu item
-    When I fill form:
+    When I fill form and check table:    
       """
       email: 'test@test.com'
       password: 'U&cmpYsxK9'
@@ -15,4 +15,8 @@ Feature: User Creation
       City: 'Tbilisi'
       Zip: 222567
       Description: 'test user'
+
       """
+     
+    
+    
