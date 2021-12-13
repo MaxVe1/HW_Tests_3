@@ -17,6 +17,7 @@ Feature: User Creation
       Description: 'test user'
 
       """
+    Then I check table
      
     
     

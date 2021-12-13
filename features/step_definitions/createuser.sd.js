@@ -28,20 +28,30 @@ When(/^I fill form and check table:$/,async function (formYaml) {
     await $('#city').setValue(formData.City);
     await $('#zip').setValue(formData.Zip);
     await $('#description').setValue(formData.Description);    
-    await $('#dashboard > div > div > div > form > button').click();
+    await $('#dashboard > div > div > div > form > button').click();      
+    
+    this.state.email = formData.email;    
+    this.state.Address = formData.Address;
+    this.state.Address2 = formData.Address2;
+    this.state.City = formData.City;
+    this.state.Zip = formData.Zip;
+    this.state.Description = formData.Description;    
+});
 
-    const emailFromTable = await $('//*[@id="users-table"]/div[2]/div/div/div[1]').getText();
-    const adr1FromTable = await $('//*[@id="users-table"]/div[2]/div/div/div[3]').getText();
-    const adr2FromTable = await $('//*[@id="users-table"]/div[2]/div/div/div[4]').getText();
-    const cityFromTable = await $('//*[@id="users-table"]/div[2]/div/div/div[5]').getText();
-    const zipFromTable = await $('//*[@id="users-table"]/div[2]/div/div/div[7]').getText();
-    const descFromTable = await $('//*[@id="users-table"]/div[2]/div/div/div[8]').getText();    
-    expect(formData.email).toEqual(emailFromTable);
-    expect(formData.Address).toEqual(adr1FromTable);
-    expect(formData.Address2).toEqual(adr2FromTable);
-    expect(formData.City).toEqual(cityFromTable);
-    expect(formData.Zip).toEqual(Number(zipFromTable));
-    expect(formData.Description).toEqual(descFromTable);
+Then("I check table", async function () {
+    const emailFromTable = await $('//*[@id="users-table"]/div[2]/div/div[2]/div[1]').getText();
+    const adr1FromTable = await $('//*[@id="users-table"]/div[2]/div/div[2]/div[3]').getText();
+    const adr2FromTable = await $('//*[@id="users-table"]/div[2]/div/div[2]/div[4]').getText();
+    const cityFromTable = await $('//*[@id="users-table"]/div[2]/div/div[2]/div[5]').getText();
+    const zipFromTable = await $('//*[@id="users-table"]/div[2]/div/div[2]/div[7]').getText();
+    const descFromTable = await $('//*[@id="users-table"]/div[2]/div/div[2]/div[8]').getText();
+    
+    expect(this.state.email).toEqual(emailFromTable);
+    expect(this.state.Address).toEqual(adr1FromTable);
+    expect(this.state.Address2).toEqual(adr2FromTable);
+    expect(this.state.City).toEqual(cityFromTable);
+    expect(this.state.Zip).toEqual(Number(zipFromTable));
+    expect(this.state.Description).toEqual(descFromTable);
 });
 
 
